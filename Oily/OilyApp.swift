@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct OilyApp: App {
+    @StateObject private var messageManager = MessageManager()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView {
+                ContentView()
+            }
+            .environmentObject(messageManager)
         }
     }
 }

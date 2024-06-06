@@ -7,18 +7,58 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB78AD8B2C10401000EC6152 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78AD8A2C10401000EC6152 /* RootView.swift */; };
+		CB78AD8D2C10406900EC6152 /* PassThroughWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78AD8C2C10406900EC6152 /* PassThroughWindow.swift */; };
+		CB78AD8F2C1040AC00EC6152 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78AD8E2C1040AC00EC6152 /* Toast.swift */; };
+		CB78AD912C1040D400EC6152 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78AD902C1040D400EC6152 /* ToastView.swift */; };
+		CB78AD932C10412E00EC6152 /* ToastViewGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78AD922C10412E00EC6152 /* ToastViewGroup.swift */; };
+		CB78AD952C10419900EC6152 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78AD942C10419900EC6152 /* MessageManager.swift */; };
+		CBDA3A3F2C10749F00B6461B /* FileViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA3A3E2C10749F00B6461B /* FileViewer.swift */; };
+		CBDA3A412C10784100B6461B /* FileServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA3A402C10784100B6461B /* FileServer.swift */; };
 		CBE2C1F02C05AA0D00A2A0CF /* OilyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C1EF2C05AA0D00A2A0CF /* OilyApp.swift */; };
 		CBE2C1F22C05AA0D00A2A0CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C1F12C05AA0D00A2A0CF /* ContentView.swift */; };
 		CBE2C1F42C05AA1000A2A0CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE2C1F32C05AA1000A2A0CF /* Assets.xcassets */; };
 		CBE2C1F72C05AA1000A2A0CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE2C1F62C05AA1000A2A0CF /* Preview Assets.xcassets */; };
+		CBE2C1FE2C05AC8E00A2A0CF /* OilCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C1FD2C05AC8E00A2A0CF /* OilCalculatorView.swift */; };
+		CBE2C2032C05AD8900A2A0CF /* FuelOilCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C1FF2C05AD8800A2A0CF /* FuelOilCalculator.swift */; };
+		CBE2C2042C05AD8900A2A0CF /* FuelOil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C2002C05AD8800A2A0CF /* FuelOil.swift */; };
+		CBE2C2052C05AD8900A2A0CF /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C2012C05AD8800A2A0CF /* Storage.swift */; };
+		CBE2C2062C05AD8900A2A0CF /* Tank.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C2022C05AD8900A2A0CF /* Tank.swift */; };
+		CBE2C2082C05AD9A00A2A0CF /* isin.json in Resources */ = {isa = PBXBuildFile; fileRef = CBE2C2072C05AD9A00A2A0CF /* isin.json */; };
+		CBE2C20B2C05AF6900A2A0CF /* DataSheetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C2092C05AF6900A2A0CF /* DataSheetDetailView.swift */; };
+		CBE2C20C2C05AF6900A2A0CF /* DataSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C20A2C05AF6900A2A0CF /* DataSheetView.swift */; };
+		CBE2C20E2C05B24600A2A0CF /* Extension+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C20D2C05B24600A2A0CF /* Extension+Bundle.swift */; };
+		CBE2C2122C05C73F00A2A0CF /* TailoredLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C2112C05C73F00A2A0CF /* TailoredLayout.swift */; };
+		CBE2C2142C05F92300A2A0CF /* TempStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C2132C05F92300A2A0CF /* TempStepper.swift */; };
+		CBE2C2162C05F97E00A2A0CF /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C2152C05F97E00A2A0CF /* CalculatorButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB78AD8A2C10401000EC6152 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		CB78AD8C2C10406900EC6152 /* PassThroughWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassThroughWindow.swift; sourceTree = "<group>"; };
+		CB78AD8E2C1040AC00EC6152 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		CB78AD902C1040D400EC6152 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		CB78AD922C10412E00EC6152 /* ToastViewGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewGroup.swift; sourceTree = "<group>"; };
+		CB78AD942C10419900EC6152 /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
+		CBDA3A3E2C10749F00B6461B /* FileViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewer.swift; sourceTree = "<group>"; };
+		CBDA3A402C10784100B6461B /* FileServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileServer.swift; sourceTree = "<group>"; };
 		CBE2C1EC2C05AA0D00A2A0CF /* Oily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE2C1EF2C05AA0D00A2A0CF /* OilyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilyApp.swift; sourceTree = "<group>"; };
 		CBE2C1F12C05AA0D00A2A0CF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CBE2C1F32C05AA1000A2A0CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBE2C1F62C05AA1000A2A0CF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CBE2C1FD2C05AC8E00A2A0CF /* OilCalculatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OilCalculatorView.swift; sourceTree = "<group>"; };
+		CBE2C1FF2C05AD8800A2A0CF /* FuelOilCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuelOilCalculator.swift; sourceTree = "<group>"; };
+		CBE2C2002C05AD8800A2A0CF /* FuelOil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuelOil.swift; sourceTree = "<group>"; };
+		CBE2C2012C05AD8800A2A0CF /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		CBE2C2022C05AD8900A2A0CF /* Tank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tank.swift; sourceTree = "<group>"; };
+		CBE2C2072C05AD9A00A2A0CF /* isin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = isin.json; sourceTree = "<group>"; };
+		CBE2C2092C05AF6900A2A0CF /* DataSheetDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSheetDetailView.swift; sourceTree = "<group>"; };
+		CBE2C20A2C05AF6900A2A0CF /* DataSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSheetView.swift; sourceTree = "<group>"; };
+		CBE2C20D2C05B24600A2A0CF /* Extension+Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Bundle.swift"; sourceTree = "<group>"; };
+		CBE2C2112C05C73F00A2A0CF /* TailoredLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailoredLayout.swift; sourceTree = "<group>"; };
+		CBE2C2132C05F92300A2A0CF /* TempStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempStepper.swift; sourceTree = "<group>"; };
+		CBE2C2152C05F97E00A2A0CF /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +92,16 @@
 			isa = PBXGroup;
 			children = (
 				CBE2C1EF2C05AA0D00A2A0CF /* OilyApp.swift */,
-				CBE2C1F12C05AA0D00A2A0CF /* ContentView.swift */,
+				CBE2C20F2C05B5D200A2A0CF /* Views */,
+				CBE2C2102C05B5E600A2A0CF /* Models */,
+				CBE2C20D2C05B24600A2A0CF /* Extension+Bundle.swift */,
+				CBE2C2112C05C73F00A2A0CF /* TailoredLayout.swift */,
+				CBE2C2072C05AD9A00A2A0CF /* isin.json */,
 				CBE2C1F32C05AA1000A2A0CF /* Assets.xcassets */,
 				CBE2C1F52C05AA1000A2A0CF /* Preview Content */,
+				CB78AD8C2C10406900EC6152 /* PassThroughWindow.swift */,
+				CB78AD942C10419900EC6152 /* MessageManager.swift */,
+				CBDA3A402C10784100B6461B /* FileServer.swift */,
 			);
 			path = Oily;
 			sourceTree = "<group>";
@@ -65,6 +112,35 @@
 				CBE2C1F62C05AA1000A2A0CF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CBE2C20F2C05B5D200A2A0CF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CBE2C1F12C05AA0D00A2A0CF /* ContentView.swift */,
+				CBE2C1FD2C05AC8E00A2A0CF /* OilCalculatorView.swift */,
+				CBE2C2092C05AF6900A2A0CF /* DataSheetDetailView.swift */,
+				CBE2C20A2C05AF6900A2A0CF /* DataSheetView.swift */,
+				CBE2C2132C05F92300A2A0CF /* TempStepper.swift */,
+				CBE2C2152C05F97E00A2A0CF /* CalculatorButton.swift */,
+				CB78AD8A2C10401000EC6152 /* RootView.swift */,
+				CB78AD902C1040D400EC6152 /* ToastView.swift */,
+				CB78AD922C10412E00EC6152 /* ToastViewGroup.swift */,
+				CBDA3A3E2C10749F00B6461B /* FileViewer.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CBE2C2102C05B5E600A2A0CF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CBE2C2002C05AD8800A2A0CF /* FuelOil.swift */,
+				CBE2C1FF2C05AD8800A2A0CF /* FuelOilCalculator.swift */,
+				CBE2C2012C05AD8800A2A0CF /* Storage.swift */,
+				CBE2C2022C05AD8900A2A0CF /* Tank.swift */,
+				CB78AD8E2C1040AC00EC6152 /* Toast.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +203,7 @@
 			files = (
 				CBE2C1F72C05AA1000A2A0CF /* Preview Assets.xcassets in Resources */,
 				CBE2C1F42C05AA1000A2A0CF /* Assets.xcassets in Resources */,
+				CBE2C2082C05AD9A00A2A0CF /* isin.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +214,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB78AD912C1040D400EC6152 /* ToastView.swift in Sources */,
+				CBDA3A3F2C10749F00B6461B /* FileViewer.swift in Sources */,
+				CBE2C2032C05AD8900A2A0CF /* FuelOilCalculator.swift in Sources */,
+				CB78AD8F2C1040AC00EC6152 /* Toast.swift in Sources */,
+				CBDA3A412C10784100B6461B /* FileServer.swift in Sources */,
+				CBE2C2142C05F92300A2A0CF /* TempStepper.swift in Sources */,
+				CBE2C2122C05C73F00A2A0CF /* TailoredLayout.swift in Sources */,
+				CBE2C2162C05F97E00A2A0CF /* CalculatorButton.swift in Sources */,
+				CB78AD952C10419900EC6152 /* MessageManager.swift in Sources */,
+				CB78AD8B2C10401000EC6152 /* RootView.swift in Sources */,
+				CBE2C20E2C05B24600A2A0CF /* Extension+Bundle.swift in Sources */,
+				CBE2C20C2C05AF6900A2A0CF /* DataSheetView.swift in Sources */,
 				CBE2C1F22C05AA0D00A2A0CF /* ContentView.swift in Sources */,
+				CBE2C1FE2C05AC8E00A2A0CF /* OilCalculatorView.swift in Sources */,
+				CBE2C2062C05AD8900A2A0CF /* Tank.swift in Sources */,
+				CBE2C2042C05AD8900A2A0CF /* FuelOil.swift in Sources */,
+				CBE2C20B2C05AF6900A2A0CF /* DataSheetDetailView.swift in Sources */,
 				CBE2C1F02C05AA0D00A2A0CF /* OilyApp.swift in Sources */,
+				CBE2C2052C05AD8900A2A0CF /* Storage.swift in Sources */,
+				CB78AD932C10412E00EC6152 /* ToastViewGroup.swift in Sources */,
+				CB78AD8D2C10406900EC6152 /* PassThroughWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,11 +371,13 @@
 				DEVELOPMENT_TEAM = 5U7PX7VSUQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Oily;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,11 +402,13 @@
 				DEVELOPMENT_TEAM = 5U7PX7VSUQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Oily;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
