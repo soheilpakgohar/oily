@@ -20,6 +20,7 @@ struct ContentView: View {
                     Label("data", systemImage: "folder.fill")
                 }
         }
+        .tint(.brown)
     }
 }
 

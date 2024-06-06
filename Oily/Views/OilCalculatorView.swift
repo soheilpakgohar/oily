@@ -14,6 +14,7 @@ struct OilCalculatorView: View {
     @FocusState private var keyboard
     @Environment(\.displayScale) var ds
     @Environment(\.colorScheme) var scheme
+    @AppStorage("selectedFile") private var selectedFile = URL(string: "www.apple.com")!
     
     var body: some View {
         NavigationView {
@@ -141,6 +142,11 @@ struct OilCalculatorView: View {
             
         }
         .accentColor(Color.label)
+        .onChange(of: selectedFile) { url in
+            Task {
+                await focalculator.getData(from: url)
+            }
+        }
     }
     
     @ViewBuilder
@@ -176,5 +182,6 @@ extension Color {
 #Preview {
     OilCalculatorView()
         .environmentObject(MessageManager())
+        .environmentObject(FileServer.shared)
     
 }

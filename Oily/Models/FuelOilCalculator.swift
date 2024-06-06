@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Combine
+import UIKit
 
 
 class FuelOilCalculator: ObservableObject {
@@ -39,17 +39,25 @@ class FuelOilCalculator: ObservableObject {
         temp = userDefaults.double(forKey: "temp")
         tankTemp = userDefaults.double(forKey: "tankTemp")
         Task {
-            await getData()
+            await getData(from: FileServer.shared.selectedFile)
         }
     }
     
     @MainActor
-    func getData() async {
-        let data = Bundle.main.decode(FuelOil.self, from: "isin.json")
-        storages = data.storages
-        cts = data.cts
-        pipline = data.pipline
-        underground = data.underground
+    func getData(from source: URL) async {
+        guard FileManager.default.fileExists(atPath: source.relativePath) else {return}
+
+        do {
+            let dataFile = try Data(contentsOf: source)
+            let data = try JSONDecoder().decode(FuelOil.self, from: dataFile)
+            storages = data.storages
+            cts = data.cts
+            pipline = data.pipline
+            underground = data.underground
+            
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     func splitDeep() -> (Int, Int) {

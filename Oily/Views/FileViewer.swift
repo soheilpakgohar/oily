@@ -9,73 +9,90 @@ import SwiftUI
 
 struct FileViewer: View {
     
-    @ObservedObject private var server = FileServer.share
+    @EnvironmentObject private var server: FileServer
     @State private var downloadURL = ""
     @State private var downloadTask = Task {}
+    @AppStorage("selectedFile") private var selectedFile = URL(string:"www.apple.com")!
     
     var body: some View {
-        VStack {
-            HStack {
-                TextField("URL", text: $downloadURL)
-                    .textFieldStyle(.roundedBorder)
+        NavigationView {
+            VStack {
+                HStack(spacing: 15) {
+                    TextField("URL", text: $downloadURL)
+                        .padding(10)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 15)
+                                .stroke(Color.gray.opacity(0.4), lineWidth: 1.5)
+                        }
+                    
+                    Group {
+                        if server.isBusy {
+                            ProgressView()
+                                .onTapGesture {
+                                    downloadTask.cancel()
+                                }
+                        } else {
+                            Button {
+                                downloadTask = Task {
+                                    await server.download(from: downloadURL)
+                                }
+                            } label: {
+                                Image(systemName: "arrow.down")
+                            }
+                            .tint(.brown)
+                            .buttonStyle(.borderedProminent)
+                            .clipShape(Circle())
+                            
+                        }
+                    }
+                    .frame(width: 25, height: 25, alignment: .center)
+                    .animation(.default, value: server.isBusy)
+                }
+                .padding()
+                .navigationTitle("File Maneger")
+                .navigationBarTitleDisplayMode(.inline)
                 
                 Group {
-                    if server.isBusy {
-                        ProgressView()
-                            .onTapGesture {
-                                downloadTask.cancel()
+                    if server.existingFiles.isEmpty {
+                        if #available(iOS 17.0, *) {
+                            ContentUnavailableView("Not Found", systemImage: "doc.text.magnifyingglass")
+                        } else {
+                            VStack {
+                                Image(systemName: "doc.text.magnifyingglass")
+                                Text("Not Found")
                             }
-                    } else {
-                        Button {
-                            downloadTask = Task {
-                                await server.download(from: downloadURL)
-                            }
-                        } label: {
-                            Image(systemName: "arrow.down")
                         }
-                        .tint(.brown)
-                        .buttonStyle(.borderedProminent)
-                        .clipShape(Circle())
-                        
+                    } else {
+                        List {
+                            ForEach(server.existingFiles, id: \.self) { file in
+                                HStack {
+                                    Image(systemName: "doc.text")
+                                    Text(file.lastPathComponent)
+                                    Spacer(minLength: 0)
+                                    if file.lastPathComponent == selectedFile.lastPathComponent {
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .foregroundStyle(Color.brown)
+                                    }
+                                }
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    selectedFile = file
+                                }
+                            }
+                            .onDelete(perform: delete)
+                        }
+                        .listStyle(.plain)
                     }
                 }
-                .frame(width: 25, height: 25, alignment: .center)
-                .animation(.default, value: server.isBusy)
+                
+                Spacer(minLength: 0)
             }
-            .padding()
-            .navigationTitle("File Maneger")
-            .navigationBarTitleDisplayMode(.inline)
-            
-            Group {
-                if server.existingFiles.isEmpty {
-                    if #available(iOS 17.0, *) {
-                        ContentUnavailableView("Not Found", systemImage: "doc.text.magnifyingglass")
-                    } else {
-                        VStack {
-                            Image(systemName: "doc.text.magnifyingglass")
-                            Text("Not Found")
-                        }
-                    }
-                } else {
-                    Picker("", selection: $server.selectedFile) {
-                        ForEach(server.existingFiles, id: \.self) { file in
-                            Text(file.lastPathComponent)
-                                .tag(file)
-                        }
-                        .onDelete(perform: delete)
-                    }
-                }
-            }
-            
-            Spacer(minLength: 0)
         }
     }
     
     private func delete(_ indexSet: IndexSet) {
         Task {
-//            for index in indexSet {
-                await server.delete(at: indexSet)
-//            }
+            await server.delete(at: indexSet)
         }
     }
     
@@ -100,7 +117,6 @@ struct FileViewer: View {
 }
 
 #Preview {
-    NavigationView {
-        FileViewer()
-    }
+    FileViewer()
+        .environmentObject(FileServer.shared)
 }

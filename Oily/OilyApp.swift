@@ -10,12 +10,14 @@ import SwiftUI
 @main
 struct OilyApp: App {
     @StateObject private var messageManager = MessageManager()
+    @StateObject private var server = FileServer.shared
     var body: some Scene {
         WindowGroup {
             RootView {
                 ContentView()
             }
             .environmentObject(messageManager)
+            .environmentObject(server)
         }
     }
 }

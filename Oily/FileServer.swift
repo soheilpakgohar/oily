@@ -19,14 +19,19 @@ class FileServer: ObservableObject {
     private init() {
         explore()
         
-        guard let selected = userDefaults.url(forKey: "selectedfile") else {return}
+        guard let selected = userDefaults.url(forKey: "selectedFile") else {return}
         selectedFile = selected
     }
     
-    static let share = FileServer()
+    static let shared = FileServer()
     
     func explore() {
-        existingFiles = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        do {
+            let docsDir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            existingFiles = try FileManager.default.contentsOfDirectory(at: docsDir, includingPropertiesForKeys: nil)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     func download(from urlString: String) async {
@@ -35,12 +40,13 @@ class FileServer: ObservableObject {
         defer {
             isBusy = false
         }
-        guard let url = URL(string: urlString) else {return}
+        guard let url = URL(string: urlString), url.pathExtension == "json" else {return}
         do {
             let saveUrl = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let (tempUrl, response) = try await URLSession.shared.download(from: url)
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {return}
             try FileManager.default.moveItem(at: tempUrl, to: saveUrl.appendingPathComponent("\(uuid)-\(url.lastPathComponent)"))
+            explore()
         } catch {
             print(error.localizedDescription)
         }
@@ -48,6 +54,9 @@ class FileServer: ObservableObject {
     
     func delete(at indexSet: IndexSet) async {
         for index in indexSet {
+            if selectedFile.lastPathComponent == existingFiles[index].lastPathComponent {
+                userDefaults.removeObject(forKey: "selectedFile")
+            }
             do {
                 try FileManager.default.removeItem(at: existingFiles[index])
                 explore()
