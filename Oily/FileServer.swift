@@ -52,17 +52,15 @@ class FileServer: ObservableObject {
         }
     }
     
-    func delete(at indexSet: IndexSet) async {
-        for index in indexSet {
-            if selectedFile.lastPathComponent == existingFiles[index].lastPathComponent {
-                userDefaults.removeObject(forKey: "selectedFile")
-            }
-            do {
-                try FileManager.default.removeItem(at: existingFiles[index])
-                explore()
-            } catch {
-                print(error.localizedDescription)
-            }
+    func delete(at index: Int) async {
+        if selectedFile.lastPathComponent == existingFiles[index].lastPathComponent {
+            userDefaults.removeObject(forKey: "selectedFile")
+        }
+        do {
+            try FileManager.default.removeItem(at: existingFiles[index])
+            explore()
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

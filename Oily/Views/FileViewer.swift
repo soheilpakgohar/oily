@@ -12,6 +12,9 @@ struct FileViewer: View {
     @EnvironmentObject private var server: FileServer
     @State private var downloadURL = ""
     @State private var downloadTask = Task {}
+    @State private var confirmation = false
+    @State private var confirmationItem: Int?
+    @State private var helpSheet = false
     @AppStorage("selectedFile") private var selectedFile = URL(string:"www.apple.com")!
     
     var body: some View {
@@ -51,6 +54,19 @@ struct FileViewer: View {
                 .padding()
                 .navigationTitle("File Maneger")
                 .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                           helpSheet = true
+                        } label: {
+                            Label("help", systemImage: "questionmark.circle")
+                                .tint(.brown)
+                        }
+                    }
+                }
+                .sheet(isPresented: $helpSheet) {
+                    Text("help")
+                }
                 
                 Group {
                     if server.existingFiles.isEmpty {
@@ -64,7 +80,7 @@ struct FileViewer: View {
                         }
                     } else {
                         List {
-                            ForEach(server.existingFiles, id: \.self) { file in
+                            ForEach(Array(server.existingFiles.enumerated()), id: \.offset) { index, file in
                                 HStack {
                                     Image(systemName: "doc.text")
                                     Text(file.lastPathComponent)
@@ -78,10 +94,21 @@ struct FileViewer: View {
                                 .onTapGesture {
                                     selectedFile = file
                                 }
+                                .swipeActions {
+                                    Button {
+                                        confirmDeletation(index)
+                                    } label: {
+                                        Label("delete", systemImage: "trash")
+                                            .labelStyle(.iconOnly)
+                                    }
+                                }
                             }
-                            .onDelete(perform: delete)
                         }
                         .listStyle(.plain)
+                        .confirmationDialog("sure to delete?", isPresented: $confirmation, presenting: confirmationItem) { index in
+                            Button("delete", role: .destructive) {delete(index)}
+                            Button("cancel", role: .cancel) {}
+                        }
                     }
                 }
                 
@@ -90,9 +117,14 @@ struct FileViewer: View {
         }
     }
     
-    private func delete(_ indexSet: IndexSet) {
+    private func confirmDeletation(_ index: Int) {
+        confirmation = true
+        confirmationItem = index
+    }
+    
+    private func delete(_ index: Int) {
         Task {
-            await server.delete(at: indexSet)
+            await server.delete(at: index)
         }
     }
     
