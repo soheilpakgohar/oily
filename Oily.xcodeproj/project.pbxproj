@@ -14,6 +14,9 @@
 		CB78AD932C10412E00EC6152 /* ToastViewGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78AD922C10412E00EC6152 /* ToastViewGroup.swift */; };
 		CB78AD952C10419900EC6152 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78AD942C10419900EC6152 /* MessageManager.swift */; };
 		CBA22BF32C12D36900F529AD /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = CBA22BF22C12D36900F529AD /* help.html */; };
+		CBA22BF52C12FFCE00F529AD /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA22BF42C12FFCE00F529AD /* Modifiers.swift */; };
+		CBA22BF72C13000700F529AD /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA22BF62C13000700F529AD /* Extension+Color.swift */; };
+		CBA22BF92C13001800F529AD /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA22BF82C13001800F529AD /* Extension+View.swift */; };
 		CBDA3A3F2C10749F00B6461B /* FileViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA3A3E2C10749F00B6461B /* FileViewer.swift */; };
 		CBDA3A412C10784100B6461B /* FileServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA3A402C10784100B6461B /* FileServer.swift */; };
 		CBE2C1F02C05AA0D00A2A0CF /* OilyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C1EF2C05AA0D00A2A0CF /* OilyApp.swift */; };
@@ -43,6 +46,9 @@
 		CB78AD922C10412E00EC6152 /* ToastViewGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewGroup.swift; sourceTree = "<group>"; };
 		CB78AD942C10419900EC6152 /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		CBA22BF22C12D36900F529AD /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = help.html; path = ../../../../../../Desktop/help.html; sourceTree = "<group>"; };
+		CBA22BF42C12FFCE00F529AD /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		CBA22BF62C13000700F529AD /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
+		CBA22BF82C13001800F529AD /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		CBDA3A3E2C10749F00B6461B /* FileViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewer.swift; sourceTree = "<group>"; };
 		CBDA3A402C10784100B6461B /* FileServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileServer.swift; sourceTree = "<group>"; };
 		CBE2C1EC2C05AA0D00A2A0CF /* Oily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oily.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +112,9 @@
 				CB78AD8C2C10406900EC6152 /* PassThroughWindow.swift */,
 				CB78AD942C10419900EC6152 /* MessageManager.swift */,
 				CBDA3A402C10784100B6461B /* FileServer.swift */,
+				CBA22BF42C12FFCE00F529AD /* Modifiers.swift */,
+				CBA22BF62C13000700F529AD /* Extension+Color.swift */,
+				CBA22BF82C13001800F529AD /* Extension+View.swift */,
 			);
 			path = Oily;
 			sourceTree = "<group>";
@@ -228,6 +237,8 @@
 				CBDA3A412C10784100B6461B /* FileServer.swift in Sources */,
 				CBE2C2142C05F92300A2A0CF /* TempStepper.swift in Sources */,
 				CBE2C2122C05C73F00A2A0CF /* TailoredLayout.swift in Sources */,
+				CBA22BF92C13001800F529AD /* Extension+View.swift in Sources */,
+				CBA22BF72C13000700F529AD /* Extension+Color.swift in Sources */,
 				CBE2C2162C05F97E00A2A0CF /* CalculatorButton.swift in Sources */,
 				CB78AD952C10419900EC6152 /* MessageManager.swift in Sources */,
 				CB78AD8B2C10401000EC6152 /* RootView.swift in Sources */,
@@ -235,6 +246,7 @@
 				CBE2C20C2C05AF6900A2A0CF /* DataSheetView.swift in Sources */,
 				CBE2C1F22C05AA0D00A2A0CF /* ContentView.swift in Sources */,
 				CBE2C1FE2C05AC8E00A2A0CF /* OilCalculatorView.swift in Sources */,
+				CBA22BF52C12FFCE00F529AD /* Modifiers.swift in Sources */,
 				CBE2C2062C05AD8900A2A0CF /* Tank.swift in Sources */,
 				CBE2C2042C05AD8900A2A0CF /* FuelOil.swift in Sources */,
 				CBE2C20B2C05AF6900A2A0CF /* DataSheetDetailView.swift in Sources */,

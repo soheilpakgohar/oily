@@ -15,6 +15,11 @@ struct TempStepper: View {
     var max: Double = 60.0
     var min: Double = 0.0
     
+    private var fahrenheit: String {
+        let temp = Measurement(value: temp, unit: UnitTemperature.celsius)
+        return temp.converted(to: UnitTemperature.fahrenheit).value.formatted()
+    }
+    
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading) {
@@ -29,7 +34,7 @@ struct TempStepper: View {
                         Image(systemName: "minus.square.fill")
                             .font(.system(size: 30))
                     }
-                    .tint(.brown)
+                    .tint(.oilish)
                     .disabled(temp <= min)
                     TextField("", value: $temp, format: .number)
                         .font(.system(size: 20, weight: .bold, design: .monospaced))
@@ -52,10 +57,10 @@ struct TempStepper: View {
                         Image(systemName: "plus.square.fill")
                             .font(.system(size: 30))
                     }
-                    .tint(.brown)
+                    .tint(.oilish)
                     .disabled(temp >= max)
                     Spacer(minLength: 0)
-                    Text(fahrenheit)
+                    Text(fahrenheit + "℉")
                         .font(.system(.caption, design: .monospaced))
                         .bold()
                         .padding(.vertical, 3)
@@ -67,11 +72,6 @@ struct TempStepper: View {
             }
             .modifier(OilCalcComfort())
         }
-    }
-    
-    private var fahrenheit: String {
-        let temp = Measurement(value: temp, unit: UnitTemperature.celsius)
-        return temp.converted(to: UnitTemperature.fahrenheit).formatted()
     }
 }
 

@@ -71,12 +71,17 @@ struct FileViewer: View {
                 Group {
                     if server.existingFiles.isEmpty {
                         if #available(iOS 17.0, *) {
-                            ContentUnavailableView("Not Found", systemImage: "doc.text.magnifyingglass")
+                            ContentUnavailableView("Empty Repository", systemImage: "doc.text.magnifyingglass")
                         } else {
                             VStack {
                                 Image(systemName: "doc.text.magnifyingglass")
-                                Text("Not Found")
+                                    .font(.system(size: 72))
+                                    .foregroundStyle(Color.gray)
+                                Text("Empty Repository")
+                                    .font(.title)
+                                    .bold()
                             }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                         }
                     } else {
                         List {

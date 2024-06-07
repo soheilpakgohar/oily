@@ -32,19 +32,19 @@ struct OilCalculatorView: View {
                         .minimumScaleFactor(0.5)
                         .disabled(true)
                         .padding([.vertical , .leading])
+                        .contentShape(Rectangle())
+                        .onTapGesture(count: 2, perform: {
+                            guard focalculator.liter != 0.0 else {return}
+                            UIPasteboard.general.string = String(describing: focalculator.liter)
+                            messageManager.showMessage(Toast(title: "coppied", icon: "doc.on.doc"))
+                        })
                     
                 }
-                .background(scheme == .dark ? Color.black : Color.white)
-                .foregroundColor(scheme == .dark ? .white : Color.black)
-                .cornerRadius(15)
+                .bordered()
                 .padding(.horizontal, 20)
                 .padding(.bottom, 8)
                 .layoutPriority(1)
-                .onTapGesture(count: 2, perform: {
-                    guard focalculator.liter != 0.0 else {return}
-                    UIPasteboard.general.string = String(describing: focalculator.liter)
-                    messageManager.showMessage(Toast(title: "coppied", icon: "doc.on.doc"))
-                })
+                
                 
                 ScrollView {
                     VStack(spacing: 15) {
@@ -64,14 +64,17 @@ struct OilCalculatorView: View {
                                 .focused($keyboard)
                         }
                         .modifier(OilCalcComfort(edges: .vertical))
+                        .bordered()
                         
                         TempStepper(title: "temprature of tank" ,temp: $focalculator.tankTemp)
                             .frame(height: 100)
                             .focused($keyboard)
+                            .bordered()
                         
                         TempStepper(title: "ambiant temprature" ,temp: $focalculator.temp, min: -20)
                             .frame(height: 100)
                             .focused($keyboard)
+                            .bordered()
                         
                         Button {
                             focalculator.calculate()
@@ -83,20 +86,19 @@ struct OilCalculatorView: View {
                                 .foregroundStyle(scheme == .dark ? .black : .white)
                         }
                         .buttonStyle(.borderedProminent)
-                        .padding(.horizontal)
-                        .tint(.brown)
+                        .padding(.top)
+                        .tint(.oilish)
                         
                         HStack {
                             CalculatorButton(action: focalculator.total, title: "MR")
                             CalculatorButton(action: focalculator.popMemory, title: "MC")
                             CalculatorButton(action: focalculator.clearAll, title: "AC")
                         }
-                        .padding(.horizontal)
-                        .tint(.brown)
+                        .tint(.oilish)
                         
                     }
-                    .padding(.horizontal, 4)
-                    .padding(.vertical)
+                    .padding()
+
                     
                     
                 }
@@ -128,15 +130,15 @@ struct OilCalculatorView: View {
                                     .bold()
                             }
                         } label: {
-                            Text("Storage \(focalculator.selectedStorage)")
+                            Text("Storage **\(focalculator.selectedStorage)**")
                                 .font(.system(.body, design: .monospaced))
                         }
-                        .tint(Color.label)
                     }
                 }
+                
             }
+            .background()
             .padding(.top, 10)
-            .background(Color.init(uiColor: UIColor.secondarySystemBackground))
             .navigationBarTitleDisplayMode(.inline)
             
             
@@ -158,25 +160,6 @@ struct OilCalculatorView: View {
             }
         }
     }
-}
-
-
-
-struct OilCalcComfort: ViewModifier {
-    
-    @Environment(\.colorScheme) private var scheme
-    var edges: Edge.Set = .all
-    
-    func body(content: Content) -> some View {
-        content
-            .padding(edges)
-            .background(scheme == .dark ? Color.black : Color.white, in: RoundedRectangle(cornerRadius: 12))
-            .padding(.horizontal)
-    }
-}
-
-extension Color {
-    static let label = Color(uiColor: UIColor.label)
 }
 
 #Preview {

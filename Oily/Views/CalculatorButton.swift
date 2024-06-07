@@ -16,6 +16,7 @@ struct CalculatorButton: View {
     var body: some View {
         Button(action: action) {
             Text(title)
+                .font(.system(.body, design: .monospaced))
                 .foregroundStyle(scheme == .dark ? .black : .white)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }

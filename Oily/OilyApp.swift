@@ -16,6 +16,9 @@ struct OilyApp: App {
             RootView {
                 ContentView()
             }
+            .onAppear {
+                UserDefaults.standard.setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+            }
             .environmentObject(messageManager)
             .environmentObject(server)
         }
