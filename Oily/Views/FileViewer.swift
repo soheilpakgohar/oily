@@ -65,7 +65,7 @@ struct FileViewer: View {
                     }
                 }
                 .sheet(isPresented: $helpSheet) {
-                    Text("help")
+                    WebView(url: Bundle.main.url(forResource: "help", withExtension: "html")!)
                 }
                 
                 Group {
