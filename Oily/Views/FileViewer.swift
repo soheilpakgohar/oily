@@ -118,7 +118,14 @@ struct FileViewer: View {
                 }
                 
                 Spacer(minLength: 0)
+                
+                Image("oil-horizon")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 80)
+                    .blur(radius: 3)
             }
+            .ignoresSafeArea(.all, edges: .bottom)
         }
     }
     
@@ -130,25 +137,6 @@ struct FileViewer: View {
     private func delete(_ index: Int) {
         Task {
             await server.delete(at: index)
-        }
-    }
-    
-    @ViewBuilder
-    private func downloadLabel() -> some View {
-        ZStack {
-            Circle()
-                .stroke()
-                .foregroundStyle(Color.secondary)
-                .frame(width: 25, height: 25)
-            Circle()
-                .trim(from: 0.0, to: 0.0)
-                .stroke(lineWidth: 2)
-                .frame(width: 25, height: 25)
-                .rotationEffect(Angle(degrees: -90))
-            
-            
-            Image(systemName: "arrow.down")
-            
         }
     }
 }

@@ -95,10 +95,10 @@ struct OilCalculatorView: View {
                         }
                         .tint(.oilish)
                         
+                        
+                        
                     }
                     .padding()
-                    
-                    
                     
                 }
                 .toolbar {
@@ -131,13 +131,21 @@ struct OilCalculatorView: View {
                         } label: {
                             Text("Storage **\(focalculator.selectedStorage)**")
                                 .font(.system(.body, design: .monospaced))
+                                .padding(8)
+                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 8))
                         }
                     }
                 }
                 
+                Image("oil-horizon")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 80)
+                    .blur(radius: 3)
             }
             .padding(.top, 10)
             .background()
+            .ignoresSafeArea(.all, edges: .bottom)
             .navigationBarTitleDisplayMode(.inline)
         }
         .accentColor(Color.label)
