@@ -10,19 +10,20 @@ import SwiftUI
 struct ToastView: View {
     var toast: Toast
     @State private var animateIn = false
-    
+    @Environment(\.colorScheme) private var scheme
     var body: some View {
         HStack {
             Image(systemName: toast.icon)
+                .foregroundStyle(Color.brown)
             Text(toast.title)
                 .bold()
+                
         }
+        
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
-        .background(Color.white, in: Capsule())
+        .background(scheme == .dark ? Color.white.opacity(0.4) : Color.black.opacity(0.1), in: Capsule())
         .clipped()
-        .shadow(radius: 2, y: 3)
-        .shadow(color: .white, radius: 2, y: -3)
         .offset(y: animateIn ? 0 : 150)
         .task {
             guard !animateIn else {return}

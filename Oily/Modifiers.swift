@@ -9,14 +9,11 @@ import SwiftUI
 
 struct OilCalcComfort: ViewModifier {
     
-    @Environment(\.colorScheme) private var scheme
     var edges: Edge.Set = .all
     
     func body(content: Content) -> some View {
         content
             .padding(edges)
-            .background(scheme == .dark ? Color.black : Color.white, in: RoundedRectangle(cornerRadius: 12))
-            .padding(.horizontal)
     }
 }
 

@@ -10,13 +10,13 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var selection = 0
-    @EnvironmentObject private var server: FileServer
+    @AppStorage("selectedFile") private var selectedFile: URL?
     
     var body: some View {
         TabView(selection: $selection) {
             OilCalculatorView()
                 .overlay(content: {
-                    if server.existingFiles.isEmpty {
+                    if selectedFile == nil {
                         if #available(iOS 17.0, *) {
                             ContentUnavailableView(label: {
                                 Label("No Data", systemImage: "doc.fill.badge.plus")

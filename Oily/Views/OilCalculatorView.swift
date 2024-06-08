@@ -18,7 +18,6 @@ struct OilCalculatorView: View {
     
     var body: some View {
         NavigationView {
-            
             VStack(alignment: .leading, spacing: 0) {
                 VStack(alignment: .leading) {
                     Text(focalculator.memory.map {String(describing: $0)}.joined(separator: ","))
@@ -98,7 +97,7 @@ struct OilCalculatorView: View {
                         
                     }
                     .padding()
-
+                    
                     
                     
                 }
@@ -137,11 +136,9 @@ struct OilCalculatorView: View {
                 }
                 
             }
-            .background()
             .padding(.top, 10)
+            .background()
             .navigationBarTitleDisplayMode(.inline)
-            
-            
         }
         .accentColor(Color.label)
         .onChange(of: selectedFile) { url in

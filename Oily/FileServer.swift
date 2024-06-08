@@ -14,13 +14,9 @@ class FileServer: ObservableObject {
     
     @Published var isBusy = false
     @Published var existingFiles: [URL] = []
-    @Published var selectedFile: URL = URL(string: "www.apple.com")!
     
     private init() {
         explore()
-        
-        guard let selected = userDefaults.url(forKey: "selectedFile") else {return}
-        selectedFile = selected
     }
     
     static let shared = FileServer()
@@ -53,7 +49,7 @@ class FileServer: ObservableObject {
     }
     
     func delete(at index: Int) async {
-        if selectedFile.lastPathComponent == existingFiles[index].lastPathComponent {
+        if let selected = userDefaults.url(forKey: "selectedFile") , selected.lastPathComponent == existingFiles[index].lastPathComponent {
             userDefaults.removeObject(forKey: "selectedFile")
         }
         do {

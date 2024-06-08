@@ -15,7 +15,7 @@ struct FileViewer: View {
     @State private var confirmation = false
     @State private var confirmationItem: Int?
     @State private var helpSheet = false
-    @AppStorage("selectedFile") private var selectedFile = URL(string:"www.apple.com")!
+    @AppStorage("selectedFile") private var selectedFile: URL?
     
     var body: some View {
         NavigationView {
@@ -90,7 +90,7 @@ struct FileViewer: View {
                                     Image(systemName: "doc.text")
                                     Text(file.lastPathComponent)
                                     Spacer(minLength: 0)
-                                    if file.lastPathComponent == selectedFile.lastPathComponent {
+                                    if file.lastPathComponent == selectedFile?.lastPathComponent {
                                         Image(systemName: "checkmark.circle.fill")
                                             .foregroundStyle(Color.brown)
                                     }

@@ -38,8 +38,9 @@ class FuelOilCalculator: ObservableObject {
     init() {
         temp = userDefaults.double(forKey: "temp")
         tankTemp = userDefaults.double(forKey: "tankTemp")
+        guard let selectedFile = userDefaults.url(forKey: "selectedFile") else {return}
         Task {
-            await getData(from: FileServer.shared.selectedFile)
+            await getData(from: selectedFile)
         }
     }
     
