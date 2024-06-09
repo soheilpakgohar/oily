@@ -34,6 +34,7 @@ class FuelOilCalculator: ObservableObject {
     @Published var sixty = true
     @Published var selectedStorage: Int = 1
     @Published var memory = [Double]()
+    @Published var ambiantLockToTank = true
     
     init() {
         temp = userDefaults.double(forKey: "temp")
@@ -62,10 +63,10 @@ class FuelOilCalculator: ObservableObject {
     }
     
     func splitDeep() -> (Int, Int) {
+        guard deep != 0 else {return (0,0)}
         let meter = Measurement(value: deep, unit: UnitLength.meters)
         let centimeter = meter.converted(to: .centimeters)
-        let deepComponent = centimeter.value.description.split(separator: ".")
-        
+        let deepComponent = centimeter.value.formatted().split(separator: ".")
         return (Int(deepComponent[0]) ?? 0,Int(deepComponent[1]) ?? 0)
     }
     
@@ -79,7 +80,7 @@ class FuelOilCalculator: ObservableObject {
     }
     
     func getCts() -> Double {
-        let t = (7 * fahrenheit(of: tankTemp) + fahrenheit(of: temp)) / 8
+        let t = (7 * fahrenheit(of: tankTemp) + fahrenheit(of: ambiantLockToTank ? tankTemp : temp)) / 8
         return cts[Int(t) - 32]
     }
     

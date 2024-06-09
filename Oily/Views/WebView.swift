@@ -17,7 +17,7 @@ struct WebView: View {
                 .ignoresSafeArea(.all, edges: .bottom)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
-                        Button("done", role: .cancel) {
+                        Button("Done", role: .cancel) {
                             dismiss()
                         }
                     }

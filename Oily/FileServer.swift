@@ -25,6 +25,7 @@ class FileServer: ObservableObject {
         do {
             let docsDir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             existingFiles = try FileManager.default.contentsOfDirectory(at: docsDir, includingPropertiesForKeys: nil)
+            print(existingFiles)
         } catch {
             print(error.localizedDescription)
         }

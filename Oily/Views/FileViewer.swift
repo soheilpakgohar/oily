@@ -24,8 +24,8 @@ struct FileViewer: View {
                     TextField("URL", text: $downloadURL)
                         .padding(10)
                         .overlay {
-                            RoundedRectangle(cornerRadius: 15)
-                                .stroke(Color.gray.opacity(0.4), lineWidth: 1.5)
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray.opacity(0.4), lineWidth: 1)
                         }
                     
                     Group {
@@ -42,7 +42,7 @@ struct FileViewer: View {
                             } label: {
                                 Image(systemName: "arrow.down")
                             }
-                            .tint(.brown)
+                            .tint(.oilish)
                             .buttonStyle(.borderedProminent)
                             .clipShape(Circle())
                             
@@ -52,15 +52,13 @@ struct FileViewer: View {
                     .animation(.default, value: server.isBusy)
                 }
                 .padding()
-                .navigationTitle("File Maneger")
-                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
                            helpSheet = true
                         } label: {
-                            Label("help", systemImage: "questionmark.circle")
-                                .tint(.brown)
+                            Label("Help", systemImage: "questionmark.circle")
+                                .tint(.oilish)
                         }
                     }
                 }
@@ -85,45 +83,52 @@ struct FileViewer: View {
                         }
                     } else {
                         List {
-                            ForEach(Array(server.existingFiles.enumerated()), id: \.offset) { index, file in
-                                HStack {
-                                    Image(systemName: "doc.text")
-                                    Text(file.lastPathComponent)
-                                    Spacer(minLength: 0)
-                                    if file.lastPathComponent == selectedFile?.lastPathComponent {
-                                        Image(systemName: "checkmark.circle.fill")
-                                            .foregroundStyle(Color.brown)
+                            Section {
+                                ForEach(Array(server.existingFiles.enumerated()), id: \.offset) { index, file in
+                                    HStack {
+                                        Image(systemName: "doc.text")
+                                        Text(file.lastPathComponent)
+                                        Spacer(minLength: 0)
+                                        if file.lastPathComponent == selectedFile?.lastPathComponent {
+                                            Image(systemName: "checkmark.circle.fill")
+                                                .foregroundStyle(Color.oilish)
+                                        }
+                                    }
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        selectedFile = file
+                                    }
+                                    .swipeActions {
+                                        Button {
+                                            confirmDeletation(index)
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                                .labelStyle(.iconOnly)
+                                        }
                                     }
                                 }
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    selectedFile = file
-                                }
-                                .swipeActions {
-                                    Button {
-                                        confirmDeletation(index)
-                                    } label: {
-                                        Label("delete", systemImage: "trash")
-                                            .labelStyle(.iconOnly)
-                                    }
-                                }
+                            } header: {
+                                Text("Files")
+                                    .textCase(.none)
                             }
+                            
+                            /*Section {
+                                
+                            } header: {
+                                Text("Settings")
+                            }*/
                         }
                         .listStyle(.plain)
-                        .confirmationDialog("sure to delete?", isPresented: $confirmation, presenting: confirmationItem) { index in
-                            Button("delete", role: .destructive) {delete(index)}
-                            Button("cancel", role: .cancel) {}
+                        .confirmationDialog("Sure to Delete?", isPresented: $confirmation, presenting: confirmationItem) { index in
+                            Button("Delete", role: .destructive) {delete(index)}
+                            Button("Cancel", role: .cancel) {}
                         }
                     }
                 }
+                .navigationTitle("File Maneger")
+                .navigationBarTitleDisplayMode(.inline)
                 
                 Spacer(minLength: 0)
-                
-                Image("oil-horizon")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: 80)
-                    .blur(radius: 3)
             }
             .ignoresSafeArea(.all, edges: .bottom)
         }
@@ -142,6 +147,7 @@ struct FileViewer: View {
 }
 
 #Preview {
-    FileViewer()
-        .environmentObject(FileServer.shared)
+    FileServer.shared.existingFiles = [URL(string: "file:///Users/soheilpakgohar/Library/Developer/CoreSimulator/Devices/478F4C56-E0D7-43FA-9525-05E0E25671F6/data/Containers/Data/Application/567E4534-F698-4BAF-9419-AE17C7A2D876/Documents/B91AB2186470-isin.json")!]
+    return FileViewer()
+            .environmentObject(FileServer.shared)
 }

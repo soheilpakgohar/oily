@@ -10,10 +10,10 @@ import SwiftUI
 struct OilCalcComfort: ViewModifier {
     
     var edges: Edge.Set = .all
-    
+    var padding: Double = 5
     func body(content: Content) -> some View {
         content
-            .padding(edges)
+            .padding(edges, padding)
     }
 }
 

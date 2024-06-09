@@ -66,15 +66,16 @@ struct TempStepper: View {
                         .padding(.vertical, 3)
                         .padding(.horizontal, 5)
                         .foregroundColor(.white)
-                        .background(Color.gray, in: Capsule())
+                        .background(Color.gray, in: RoundedRectangle(cornerRadius: 5))
                 }
                 
             }
-            .modifier(OilCalcComfort())
+            .modifier(OilCalcComfort(padding: 15))
         }
+        .frame(height: 100)
     }
 }
 
 #Preview {
-    TempStepper(title: "temp stepper", temp: .constant(25.0))
+    TempStepper(title: "Temp Stepper", temp: .constant(25.0))
 }

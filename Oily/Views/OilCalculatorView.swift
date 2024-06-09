@@ -14,7 +14,7 @@ struct OilCalculatorView: View {
     @FocusState private var keyboard
     @Environment(\.displayScale) var ds
     @Environment(\.colorScheme) var scheme
-    @AppStorage("selectedFile") private var selectedFile = URL(string: "www.apple.com")!
+    @AppStorage("selectedFile") private var selectedFile: URL?
     
     var body: some View {
         NavigationView {
@@ -23,9 +23,11 @@ struct OilCalculatorView: View {
                     Text(focalculator.memory.map {String(describing: $0)}.joined(separator: ","))
                         .font(.caption)
                         .bold()
-                        .padding([.top, .leading])
+                        .lineLimit(1)
+                        .padding(8)
+                        .fixedSize(horizontal: false, vertical: true)
                     
-                    TextField("liter", value: $focalculator.liter, format: .number)
+                    TextField("Liter", value: $focalculator.liter, format: .number)
                         .font(.system(size: 68, design: .monospaced))
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
@@ -35,7 +37,7 @@ struct OilCalculatorView: View {
                         .onTapGesture(count: 2, perform: {
                             guard focalculator.liter != 0.0 else {return}
                             UIPasteboard.general.string = String(describing: focalculator.liter)
-                            messageManager.showMessage(Toast(title: "coppied", icon: "doc.on.doc"))
+                            messageManager.showMessage(Toast(title: "Coppied", icon: "doc.on.doc"))
                         })
                     
                 }
@@ -57,28 +59,29 @@ struct OilCalculatorView: View {
                             
                             Spacer(minLength: 0)
                             
-                            TextField("deep", value: $focalculator.deep ,format: .number)
+                            TextField("Deep", value: $focalculator.deep ,format: .number)
                                 .font(.system(.title, design: .monospaced))
                                 .keyboardType(.decimalPad)
                                 .focused($keyboard)
                         }
-                        .modifier(OilCalcComfort(edges: .vertical))
+                        .modifier(OilCalcComfort())
                         .bordered()
                         
-                        TempStepper(title: "temprature of tank" ,temp: $focalculator.tankTemp)
-                            .frame(height: 100)
+                        TempStepper(title: "Temprature of Tank" ,temp: $focalculator.tankTemp)
                             .focused($keyboard)
                             .bordered()
                         
-                        TempStepper(title: "ambiant temprature" ,temp: $focalculator.temp, min: -20)
-                            .frame(height: 100)
-                            .focused($keyboard)
-                            .bordered()
+                        if !focalculator.ambiantLockToTank {
+                            TempStepper(title: "Ambiant Temprature" ,temp: $focalculator.temp, min: -20)
+                                .frame(height: 100)
+                                .focused($keyboard)
+                                .bordered()
+                        }
                         
-                        Button {
+                        /*Button {
                             focalculator.calculate()
                         } label: {
-                            Text("calculate")
+                            Text("Calculate")
                                 .bold()
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 8)
@@ -86,14 +89,27 @@ struct OilCalculatorView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .padding(.top)
-                        .tint(.oilish)
+                        .tint(.oilish)*/
                         
                         HStack {
-                            CalculatorButton(action: focalculator.total, title: "MR")
-                            CalculatorButton(action: focalculator.popMemory, title: "MC")
-                            CalculatorButton(action: focalculator.clearAll, title: "AC")
+                            VStack {
+                                CalculatorButton(action: focalculator.total, title: "MR")
+                                CalculatorButton(action: focalculator.popMemory, title: "MC")
+                                CalculatorButton(action: focalculator.clearAll, title: "AC")
+                            }
+                            .tint(Color.brown)
+                            Button {
+                                focalculator.calculate()
+                            } label: {
+                                Image(systemName: "equal")
+                                    .frame(minWidth: 45,maxHeight: .infinity)
+                                    .padding(.vertical, 8)
+                                    .foregroundStyle(scheme == .dark ? .black : .white)
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .tint(.oilish)
                         }
-                        .tint(.oilish)
+                        
                         
                         
                         
@@ -104,7 +120,7 @@ struct OilCalculatorView: View {
                 .toolbar {
                     ToolbarItem(placement: .keyboard) {
                         HStack {
-                            Button("done") {
+                            Button("Done") {
                                 keyboard = false
                             }
                             Spacer(minLength: 0)
@@ -125,9 +141,14 @@ struct OilCalculatorView: View {
                             menuBuilder()
                             Divider()
                             Toggle(isOn: $focalculator.sixty) {
-                                Text("in 60 degree")
-                                    .bold()
+                                Text("In 60 Degree")
+                                    
                             }
+                            
+                            Toggle(isOn: $focalculator.ambiantLockToTank.animation()) {
+                                Text("Ambiant Lock to Tank")
+                            }
+                            
                         } label: {
                             Text("Storage **\(focalculator.selectedStorage)**")
                                 .font(.system(.body, design: .monospaced))
@@ -136,12 +157,6 @@ struct OilCalculatorView: View {
                         }
                     }
                 }
-                
-                Image("oil-horizon")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: 80)
-                    .blur(radius: 3)
             }
             .padding(.top, 10)
             .background()
@@ -150,6 +165,7 @@ struct OilCalculatorView: View {
         }
         .accentColor(Color.label)
         .onChange(of: selectedFile) { url in
+            guard let url else {return}
             Task {
                 await focalculator.getData(from: url)
             }
