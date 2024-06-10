@@ -23,6 +23,7 @@ struct TempStepper: View {
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading) {
+                Spacer(minLength: 0)
                 Text(title)
                     .font(.footnote)
                     .foregroundColor(.gray)
@@ -68,9 +69,9 @@ struct TempStepper: View {
                         .foregroundColor(.white)
                         .background(Color.gray, in: RoundedRectangle(cornerRadius: 5))
                 }
-                
+                Spacer(minLength: 0)
             }
-            .modifier(OilCalcComfort(padding: 15))
+            .modifier(OilCalcComfort(padding: 10))
         }
         .frame(height: 100)
     }

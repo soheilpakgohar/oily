@@ -64,7 +64,7 @@ struct OilCalculatorView: View {
                                 .keyboardType(.decimalPad)
                                 .focused($keyboard)
                         }
-                        .modifier(OilCalcComfort())
+                        .modifier(OilCalcComfort(edges: .vertical, padding: 10))
                         .bordered()
                         
                         TempStepper(title: "Temprature of Tank" ,temp: $focalculator.tankTemp)
@@ -97,7 +97,7 @@ struct OilCalculatorView: View {
                                 CalculatorButton(action: focalculator.popMemory, title: "MC")
                                 CalculatorButton(action: focalculator.clearAll, title: "AC")
                             }
-                            .tint(Color.brown)
+                            .tint(Color.gray)
                             Button {
                                 focalculator.calculate()
                             } label: {
@@ -126,6 +126,7 @@ struct OilCalculatorView: View {
                             Spacer(minLength: 0)
                         }
                     }
+                    
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink {
                             DataSheetView(storages: focalculator.storages, ctses: focalculator.cts)
@@ -133,7 +134,6 @@ struct OilCalculatorView: View {
                             Image(systemName: "info.circle")
                         }
                         .tint(.brown)
-                        
                     }
                     
                     ToolbarItem(placement: .navigationBarLeading) {
@@ -184,8 +184,10 @@ struct OilCalculatorView: View {
 }
 
 #Preview {
-    OilCalculatorView()
-        .environmentObject(MessageManager())
-        .environmentObject(FileServer.shared)
+    let url = URL(string: "file:///Users/soheilpakgohar/Library/Developer/CoreSimulator/Devices/478F4C56-E0D7-43FA-9525-05E0E25671F6/data/Containers/Data/Application/567E4534-F698-4BAF-9419-AE17C7A2D876/Documents/B91AB2186470-isin.json")!
+    FileServer.shared.existingFiles = [url]
+    return OilCalculatorView()
+            .environmentObject(MessageManager())
+            .environmentObject(FileServer.shared)
     
 }

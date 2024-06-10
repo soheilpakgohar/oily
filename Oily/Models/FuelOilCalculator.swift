@@ -34,11 +34,16 @@ class FuelOilCalculator: ObservableObject {
     @Published var sixty = true
     @Published var selectedStorage: Int = 1
     @Published var memory = [Double]()
-    @Published var ambiantLockToTank = true
+    @Published var ambiantLockToTank = true {
+        didSet {
+            userDefaults.setValue(ambiantLockToTank, forKey: "ambiantLockToTank")
+        }
+    }
     
     init() {
         temp = userDefaults.double(forKey: "temp")
         tankTemp = userDefaults.double(forKey: "tankTemp")
+        ambiantLockToTank = userDefaults.bool(forKey: "ambiantLockToTank")
         guard let selectedFile = userDefaults.url(forKey: "selectedFile") else {return}
         Task {
             await getData(from: selectedFile)
