@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 @main
 struct OilyApp: App {
@@ -16,11 +17,18 @@ struct OilyApp: App {
             RootView {
                 ContentView()
             }
-            .onAppear {
+            .task {
                 UserDefaults.standard.setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+                if #available(iOS 17.0, *) {
+                    try? Tips.configure([
+                        .datastoreLocation(.applicationDefault),
+                        .displayFrequency(.daily)
+                    ])
+                }
             }
             .environmentObject(messageManager)
             .environmentObject(server)
+            
         }
     }
 }

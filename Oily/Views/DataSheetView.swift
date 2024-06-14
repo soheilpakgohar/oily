@@ -39,7 +39,7 @@ struct DataSheetView: View {
             }
             .textCase(.none)
         }
-        .navigationTitle(Text("datasheets"))
+        .navigationTitle(Text("Datasheets"))
         .navigationBarTitleDisplayMode(.inline)
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    func bordered(color: Color = .oilish) -> some View {
+    func bordered(color: Color = .gray.opacity(0.7)) -> some View {
         self.modifier(MakeBorderd(color: color))
     }
 }

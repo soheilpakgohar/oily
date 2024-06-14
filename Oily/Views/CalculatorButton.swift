@@ -20,7 +20,8 @@ struct CalculatorButton: View {
                 .foregroundStyle(scheme == .dark ? .black : .white)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .buttonStyle(.borderedProminent)
+        .background(Color.secondary)
+        .clipShape(Capsule())
     }
 }
 

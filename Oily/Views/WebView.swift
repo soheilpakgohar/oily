@@ -15,6 +15,8 @@ struct WebView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                Color(uiColor: UIColor.systemBackground)
+                    .ignoresSafeArea()
                 WebLoader(url: url, isLoading: $isLoading)
                 if isLoading {
                     ProgressView("Loading...")
@@ -22,7 +24,7 @@ struct WebView: View {
             }
             .ignoresSafeArea(.all, edges: .bottom)
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Done", role: .cancel) {
                         dismiss()
                     }

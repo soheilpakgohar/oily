@@ -32,10 +32,9 @@ struct TempStepper: View {
                         guard temp >= min else {return}
                         temp -= 0.1
                     } label: {
-                        Image(systemName: "minus.square.fill")
+                        Image(systemName: "minus.square")
                             .font(.system(size: 30))
                     }
-                    .tint(.oilish)
                     .disabled(temp <= min)
                     TextField("", value: $temp, format: .number)
                         .font(.system(size: 20, weight: .bold, design: .monospaced))
@@ -55,10 +54,9 @@ struct TempStepper: View {
                         guard temp < max else {return}
                         temp += 0.1
                     } label: {
-                        Image(systemName: "plus.square.fill")
+                        Image(systemName: "plus.square")
                             .font(.system(size: 30))
                     }
-                    .tint(.oilish)
                     .disabled(temp >= max)
                     Spacer(minLength: 0)
                     Text(fahrenheit + "℉")

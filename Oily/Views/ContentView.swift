@@ -53,17 +53,16 @@ struct ContentView: View {
                     }
                 })
                 .tabItem {
-                    Label("calculator", systemImage: "drop.keypad.rectangle.fill")
+                    Label("Calculator", systemImage: "drop.keypad.rectangle.fill")
                 }
                 .tag(0)
             
             FileViewer()
                 .tabItem {
-                    Label("data", systemImage: "folder.fill")
+                    Label("Files", systemImage: "folder.fill")
                 }
                 .tag(1)
         }
-        .tint(.oilish)
     }
 }
 

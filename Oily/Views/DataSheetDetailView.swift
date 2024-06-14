@@ -33,7 +33,7 @@ struct DataSheetDetailView: View {
                         }
                     }
                 }
-                .listStyle(PlainListStyle())
+                .listStyle(.plain)
             } else if let arr = data as? [Double] {
                 List {
                     ForEach(arr.indices, id: \.self) { index in
@@ -48,7 +48,7 @@ struct DataSheetDetailView: View {
             }
         }
         .padding(.all)
-        .navigationTitle(Text("values"))
+        .navigationTitle(Text("Values"))
         .navigationBarTitleDisplayMode(.inline)
     }
     

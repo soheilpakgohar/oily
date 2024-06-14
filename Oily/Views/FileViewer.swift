@@ -42,7 +42,7 @@ struct FileViewer: View {
                             } label: {
                                 Image(systemName: "arrow.down")
                             }
-                            .tint(.oilish)
+                            
                             .buttonStyle(.borderedProminent)
                             .clipShape(Circle())
                             
@@ -57,8 +57,10 @@ struct FileViewer: View {
                         Button {
                            helpSheet = true
                         } label: {
-                            Label("Help", systemImage: "questionmark.circle")
-                                .tint(.oilish)
+                            Image(systemName: "questionmark")
+                                .imageScale(.medium)
+                                .padding(8)
+                                .background(.ultraThinMaterial, in: Circle())
                         }
                     }
                 }
@@ -91,7 +93,9 @@ struct FileViewer: View {
                                         Spacer(minLength: 0)
                                         if file.lastPathComponent == selectedFile?.lastPathComponent {
                                             Image(systemName: "checkmark.circle.fill")
-                                                .foregroundStyle(Color.oilish)
+                                                .foregroundStyle(Color.green)
+                                        } else {
+                                            Image(systemName: "circle.dashed")
                                         }
                                     }
                                     .contentShape(Rectangle())
@@ -104,6 +108,7 @@ struct FileViewer: View {
                                         } label: {
                                             Label("Delete", systemImage: "trash")
                                                 .labelStyle(.iconOnly)
+                                                .tint(.red)
                                         }
                                     }
                                 }
@@ -118,15 +123,14 @@ struct FileViewer: View {
                                 Text("Settings")
                             }*/
                         }
-                        .listStyle(.plain)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
                         .confirmationDialog("Sure to Delete?", isPresented: $confirmation, presenting: confirmationItem) { index in
                             Button("Delete", role: .destructive) {delete(index)}
                             Button("Cancel", role: .cancel) {}
                         }
                     }
                 }
-                .navigationTitle("File Maneger")
-                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("Files")
                 
                 Spacer(minLength: 0)
             }
