@@ -92,8 +92,25 @@ struct OilCalculatorView: View {
                                 .padding(.horizontal,10)
                                 .background(.ultraThinMaterial, in: Capsule())
                         }
+                        .disabled(focalculator.convertorMode)
                         
                         
+                    }
+                    
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            withAnimation {
+                                focalculator.convertorMode.toggle()
+                            }
+                        } label: {
+                            Image(systemName: "arrow.left.arrow.right")
+                                .animation(.default, value: focalculator.convertorMode)
+                                .imageScale(.medium)
+                                .foregroundStyle(Color.white)
+                                .padding(.vertical,5)
+                                .padding(.horizontal,8)
+                                .background(focalculator.convertorMode ? Color.blue : .gray, in: Capsule())
+                        }
                     }
                 }
             }
@@ -129,15 +146,15 @@ struct OilCalculatorView: View {
         VStack(spacing: 15) {
             
             HStack {
-                Image(systemName: "ruler")
+                Image(systemName: focalculator.convertorMode ? "drop.halffull" : "ruler")
                     .imageScale(.large)
                     .foregroundColor(.gray)
-                    .rotationEffect(Angle(degrees: 90))
-                    .padding(.leading, 6)
+                    .rotationEffect(Angle(degrees: focalculator.convertorMode ? 0 : 90))
+                    .frame(width: 50, height: 25)
                 
                 Spacer(minLength: 0)
                 
-                TextField("Deep", value: $focalculator.deep ,format: .number)
+                TextField(focalculator.convertorMode ? "Liter" : "Deep", value: $focalculator.deep ,format: .number)
                     .font(.system(.title, design: .monospaced))
                     .keyboardType(.decimalPad)
                     .focused($keyboard)

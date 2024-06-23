@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		CB366F8B2C1C1E3E00EBD3B4 /* FinalVolumeTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB366F8A2C1C1E3E00EBD3B4 /* FinalVolumeTip.swift */; };
+		CB757F302C280A290020D580 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = CB757F2F2C280A290020D580 /* help.html */; };
+		CB757F342C2813D80020D580 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = CB757F332C2813D80020D580 /* sample.png */; };
 		CB78AD8B2C10401000EC6152 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78AD8A2C10401000EC6152 /* RootView.swift */; };
 		CB78AD8D2C10406900EC6152 /* PassThroughWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78AD8C2C10406900EC6152 /* PassThroughWindow.swift */; };
 		CB78AD8F2C1040AC00EC6152 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78AD8E2C1040AC00EC6152 /* Toast.swift */; };
 		CB78AD912C1040D400EC6152 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78AD902C1040D400EC6152 /* ToastView.swift */; };
 		CB78AD932C10412E00EC6152 /* ToastViewGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78AD922C10412E00EC6152 /* ToastViewGroup.swift */; };
 		CB78AD952C10419900EC6152 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB78AD942C10419900EC6152 /* MessageManager.swift */; };
-		CBA22BF32C12D36900F529AD /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = CBA22BF22C12D36900F529AD /* help.html */; };
 		CBA22BF52C12FFCE00F529AD /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA22BF42C12FFCE00F529AD /* Modifiers.swift */; };
 		CBA22BF72C13000700F529AD /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA22BF62C13000700F529AD /* Extension+Color.swift */; };
 		CBA22BF92C13001800F529AD /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA22BF82C13001800F529AD /* Extension+View.swift */; };
@@ -42,13 +43,14 @@
 
 /* Begin PBXFileReference section */
 		CB366F8A2C1C1E3E00EBD3B4 /* FinalVolumeTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalVolumeTip.swift; sourceTree = "<group>"; };
+		CB757F2F2C280A290020D580 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = help.html; path = Oily/help.html; sourceTree = SOURCE_ROOT; };
+		CB757F332C2813D80020D580 /* sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sample.png; path = Oily/sample.png; sourceTree = SOURCE_ROOT; };
 		CB78AD8A2C10401000EC6152 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		CB78AD8C2C10406900EC6152 /* PassThroughWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassThroughWindow.swift; sourceTree = "<group>"; };
 		CB78AD8E2C1040AC00EC6152 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		CB78AD902C1040D400EC6152 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		CB78AD922C10412E00EC6152 /* ToastViewGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewGroup.swift; sourceTree = "<group>"; };
 		CB78AD942C10419900EC6152 /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
-		CBA22BF22C12D36900F529AD /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = help.html; path = ../../../../../../Desktop/help.html; sourceTree = "<group>"; };
 		CBA22BF42C12FFCE00F529AD /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		CBA22BF62C13000700F529AD /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
 		CBA22BF82C13001800F529AD /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
@@ -145,9 +147,10 @@
 				CB78AD922C10412E00EC6152 /* ToastViewGroup.swift */,
 				CBDA3A3E2C10749F00B6461B /* FileViewer.swift */,
 				CBE5D4A92C12048000A503A4 /* WebView.swift */,
-				CBA22BF22C12D36900F529AD /* help.html */,
 				CBAB5CF32C197E390097A7FA /* HowitworksView.swift */,
 				CB366F8A2C1C1E3E00EBD3B4 /* FinalVolumeTip.swift */,
+				CB757F2F2C280A290020D580 /* help.html */,
+				CB757F332C2813D80020D580 /* sample.png */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,9 +226,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBE2C1F72C05AA1000A2A0CF /* Preview Assets.xcassets in Resources */,
-				CBA22BF32C12D36900F529AD /* help.html in Resources */,
+				CB757F302C280A290020D580 /* help.html in Resources */,
 				CBE2C1F42C05AA1000A2A0CF /* Assets.xcassets in Resources */,
 				CBE2C2082C05AD9A00A2A0CF /* isin.json in Resources */,
+				CB757F342C2813D80020D580 /* sample.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

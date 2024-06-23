@@ -40,6 +40,13 @@ class FuelOilCalculator: ObservableObject {
         }
     }
     
+    @Published var convertorMode = false {
+        didSet {
+            ambiantLockToTank = true
+            deep = 0
+        }
+    }
+    
     init() {
         temp = userDefaults.double(forKey: "temp")
         tankTemp = userDefaults.double(forKey: "tankTemp")
@@ -67,11 +74,15 @@ class FuelOilCalculator: ObservableObject {
         }
     }
     
+    func deepIsVerified() -> Bool {
+        deep > 0.0 && deep < Double(storages[selectedStorage - 1].cm.count) * 0.01
+    }
+    
     func splitDeep() -> (Int, Int) {
-        guard deep != 0 else {return (0,0)}
+        guard deepIsVerified() else {return (0,0)}
         let meter = Measurement(value: deep, unit: UnitLength.meters)
-        let centimeter = meter.converted(to: .centimeters)
-        let deepComponent = centimeter.value.formatted().split(separator: ".")
+        let centimeter = meter.converted(to: .centimeters).value
+        let deepComponent = centimeter.formatted(.number.grouping(.never)).split(separator: ".")
         return (Int(deepComponent[0]) ?? 0,Int(deepComponent[1]) ?? 0)
     }
     
@@ -101,11 +112,11 @@ class FuelOilCalculator: ObservableObject {
     }
     
     func calculate() {
-        let (cm, mm) = splitDeep()
-        guard cm < storages[selectedStorage - 1].cm.count , mm < storages[selectedStorage - 1].mm.count else {
-            liter = 0
+        guard !convertorMode else {
+            liter = (deep * sixtyFactor).rounded()
             return
         }
+        let (cm, mm) = splitDeep()
         let volume = storages[selectedStorage - 1].cm[cm] + storages[selectedStorage - 1].mm[mm]
         let normalVolume = volume * getCts()
         if sixty {

@@ -10,7 +10,7 @@ import SwiftUI
 struct HowitworksView: View {
     
     let howitworksItems: [HowitworksItem] = [
-        .init(text: "first of first put the *deep* and *temprature* tank and ambiant and hit the *equal* button", image: "1"),
+        .init(text: "first of first put the *deep* and *temprature* of tank and ambiant and hit the *equal* button", image: "1"),
         .init(text: "after seeing the result at the top, from the *storages* menu at the top left corner choose the next tank and repeat previus slide to calculate the volume", image: "4"),
         .init(text: "finaly after calculate all storages volumes hit the *MR* button to calculate the total volume of all storages. to repeat the process just hit the *MC* to make a fresh screen and memory", image: "5")
         
