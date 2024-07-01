@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var selection = 0
+    @StateObject private var FOCalculator = FuelOilCalculator()
     @AppStorage("selectedFile") private var selectedFile: URL?
     
     var body: some View {
@@ -57,12 +58,19 @@ struct ContentView: View {
                 }
                 .tag(0)
             
+            ConverterView()
+                .tabItem {
+                    Label("Converter", systemImage: "arrow.left.arrow.right")
+                }
+                .tag(1)
+            
             FileViewer()
                 .tabItem {
                     Label("Files", systemImage: "folder.fill")
                 }
-                .tag(1)
+                .tag(2)
         }
+        .environmentObject(FOCalculator)
     }
 }
 

@@ -11,7 +11,7 @@ import TipKit
 struct OilCalculatorView: View {
     
     @EnvironmentObject private var messageManager: MessageManager
-    @StateObject private var focalculator = FuelOilCalculator()
+    @EnvironmentObject private var focalculator: FuelOilCalculator
     @FocusState private var keyboard
     @Environment(\.displayScale) var ds
     @Environment(\.colorScheme) var scheme
@@ -60,6 +60,7 @@ struct OilCalculatorView: View {
                                 .padding(8)
                                 .background(.ultraThinMaterial, in: Circle())
                         }
+                        .disabled(selectedFile == nil)
                     }
                     
                     ToolbarItem(placement: .topBarLeading) {
@@ -77,6 +78,7 @@ struct OilCalculatorView: View {
                                 .padding(8)
                                 .background(.ultraThinMaterial, in: Capsule())
                         }
+                        .disabled(selectedFile == nil)
                     }
                     
                     ToolbarItem(placement: .topBarLeading) {
@@ -92,25 +94,8 @@ struct OilCalculatorView: View {
                                 .padding(.horizontal,10)
                                 .background(.ultraThinMaterial, in: Capsule())
                         }
-                        .disabled(focalculator.convertorMode)
                         
                         
-                    }
-                    
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            withAnimation {
-                                focalculator.convertorMode.toggle()
-                            }
-                        } label: {
-                            Image(systemName: "arrow.left.arrow.right")
-                                .animation(.default, value: focalculator.convertorMode)
-                                .imageScale(.medium)
-                                .foregroundStyle(Color.white)
-                                .padding(.vertical,5)
-                                .padding(.horizontal,8)
-                                .background(focalculator.convertorMode ? Color.blue : .gray, in: Capsule())
-                        }
                     }
                 }
             }
@@ -146,15 +131,15 @@ struct OilCalculatorView: View {
         VStack(spacing: 15) {
             
             HStack {
-                Image(systemName: focalculator.convertorMode ? "drop.halffull" : "ruler")
+                Image(systemName: "ruler")
                     .imageScale(.large)
                     .foregroundColor(.gray)
-                    .rotationEffect(Angle(degrees: focalculator.convertorMode ? 0 : 90))
+                    .rotationEffect(Angle(degrees: 90))
                     .frame(width: 50, height: 25)
                 
                 Spacer(minLength: 0)
                 
-                TextField(focalculator.convertorMode ? "Liter" : "Deep", value: $focalculator.deep ,format: .number)
+                TextField("Deep", value: $focalculator.deep ,format: .number)
                     .font(.system(.title, design: .monospaced))
                     .keyboardType(.decimalPad)
                     .focused($keyboard)
@@ -193,7 +178,7 @@ struct OilCalculatorView: View {
                             .clipShape(Capsule())
                     }
                 }
-
+                
                 Button {
                     howitworksView.toggle()
                 } label: {
@@ -248,4 +233,5 @@ struct OilCalculatorView: View {
     return OilCalculatorView()
         .environmentObject(MessageManager())
         .environmentObject(FileServer.shared)
+        .environmentObject(FuelOilCalculator())
 }

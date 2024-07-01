@@ -20,6 +20,7 @@
 		CBA22BF72C13000700F529AD /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA22BF62C13000700F529AD /* Extension+Color.swift */; };
 		CBA22BF92C13001800F529AD /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA22BF82C13001800F529AD /* Extension+View.swift */; };
 		CBAB5CF42C197E390097A7FA /* HowitworksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB5CF32C197E390097A7FA /* HowitworksView.swift */; };
+		CBBEC9232C3275400057458C /* ConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBEC9222C3275400057458C /* ConverterView.swift */; };
 		CBDA3A3F2C10749F00B6461B /* FileViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA3A3E2C10749F00B6461B /* FileViewer.swift */; };
 		CBDA3A412C10784100B6461B /* FileServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDA3A402C10784100B6461B /* FileServer.swift */; };
 		CBE2C1F02C05AA0D00A2A0CF /* OilyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2C1EF2C05AA0D00A2A0CF /* OilyApp.swift */; };
@@ -55,6 +56,7 @@
 		CBA22BF62C13000700F529AD /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
 		CBA22BF82C13001800F529AD /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		CBAB5CF32C197E390097A7FA /* HowitworksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowitworksView.swift; sourceTree = "<group>"; };
+		CBBEC9222C3275400057458C /* ConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterView.swift; sourceTree = "<group>"; };
 		CBDA3A3E2C10749F00B6461B /* FileViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewer.swift; sourceTree = "<group>"; };
 		CBDA3A402C10784100B6461B /* FileServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileServer.swift; sourceTree = "<group>"; };
 		CBE2C1EC2C05AA0D00A2A0CF /* Oily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oily.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +153,7 @@
 				CB366F8A2C1C1E3E00EBD3B4 /* FinalVolumeTip.swift */,
 				CB757F2F2C280A290020D580 /* help.html */,
 				CB757F332C2813D80020D580 /* sample.png */,
+				CBBEC9222C3275400057458C /* ConverterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				CBE2C2142C05F92300A2A0CF /* TempStepper.swift in Sources */,
 				CBE2C2122C05C73F00A2A0CF /* TailoredLayout.swift in Sources */,
 				CBA22BF92C13001800F529AD /* Extension+View.swift in Sources */,
+				CBBEC9232C3275400057458C /* ConverterView.swift in Sources */,
 				CBA22BF72C13000700F529AD /* Extension+Color.swift in Sources */,
 				CBE2C2162C05F97E00A2A0CF /* CalculatorButton.swift in Sources */,
 				CB366F8B2C1C1E3E00EBD3B4 /* FinalVolumeTip.swift in Sources */,
@@ -414,7 +418,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.0;
+				MARKETING_VERSION = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soheilpakgohar.Oily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -445,7 +449,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.0;
+				MARKETING_VERSION = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soheilpakgohar.Oily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

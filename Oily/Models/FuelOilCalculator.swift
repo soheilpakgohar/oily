@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import Combine
 
 class FuelOilCalculator: ObservableObject {
     
@@ -40,17 +40,20 @@ class FuelOilCalculator: ObservableObject {
         }
     }
     
-    @Published var convertorMode = false {
+    @Published var convertorMode: Bool = false {
         didSet {
-            ambiantLockToTank = true
-            deep = 0
+            deep = 0.0
+            liter = 0.0
         }
     }
+    
+    private var cancelableSet = Set<AnyCancellable>()
     
     init() {
         temp = userDefaults.double(forKey: "temp")
         tankTemp = userDefaults.double(forKey: "tankTemp")
         ambiantLockToTank = userDefaults.bool(forKey: "ambiantLockToTank")
+        converter.receive(on: RunLoop.main).sink(receiveValue: {_ in}).store(in: &cancelableSet)
         guard let selectedFile = userDefaults.url(forKey: "selectedFile") else {return}
         Task {
             await getData(from: selectedFile)
@@ -132,6 +135,18 @@ class FuelOilCalculator: ObservableObject {
     func total() {
         liter = memory.reduce(pipline + underground, +).rounded()
         memory.removeAll()
+    }
+    
+    private var converter: AnyPublisher<Bool, Never> {
+        Publishers.CombineLatest($deep, $tankTemp)
+            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .map {_, _ in
+                if self.convertorMode {
+                    self.calculate()
+                }
+                return true
+            }
+            .eraseToAnyPublisher()
     }
     
 }

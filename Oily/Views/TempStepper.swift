@@ -49,7 +49,7 @@ struct TempStepper: View {
                         .textFieldStyle(.roundedBorder)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.center)
-                        .frame(width: geo.size.width / 5)
+                        .frame(width: geo.size.width / 4)
                     Button {
                         guard temp < max else {return}
                         temp += 0.1

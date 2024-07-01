@@ -50,7 +50,7 @@ class FileServer: ObservableObject {
     
     func delete(at index: Int) async {
         if let selected = userDefaults.url(forKey: "selectedFile") , selected.lastPathComponent == existingFiles[index].lastPathComponent {
-            userDefaults.removeObject(forKey: "selectedFile")
+            userDefaults.set(nil, forKey: "selectedFile")
         }
         do {
             try FileManager.default.removeItem(at: existingFiles[index])
