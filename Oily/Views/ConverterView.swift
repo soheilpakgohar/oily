@@ -6,13 +6,48 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ConverterView: View {
+    
+    var body: some View {
+        TabView {
+            UsageConverterView()
+                .tag(0)
+            
+            LoadConverterView()
+                .tag(1)
+        }
+        .tabViewStyle(.page)
+        .ignoresSafeArea(.all, edges: .top)
+    }
+}
+
+struct UsageConverterView: View {
     
     @EnvironmentObject private var focalculator: FuelOilCalculator
     @FocusState private var keyboard
     var body: some View {
-        NavigationView {
+        VStack {
+            HStack {
+                Text("Usage Converter")
+                    .font(.title3)
+                    .bold()
+                
+                Spacer(minLength: 0)
+                
+                Button {
+                    focalculator.deep = 0.0
+                } label: {
+                    Image(systemName: "arrow.2.squarepath")
+                        .imageScale(.medium)
+                        .padding(8)
+                        .background(.ultraThinMaterial, in: Circle())
+                }
+            }
+            .padding(.horizontal)
+            .padding(.vertical, 8)
+            
             Form {
                 Section {
                     Text(focalculator.liter, format: .number)
@@ -51,8 +86,6 @@ struct ConverterView: View {
                     }
                 }
             }
-            .navigationTitle(Text("Converter"))
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .keyboard) {
                     HStack {
@@ -60,14 +93,6 @@ struct ConverterView: View {
                             keyboard = false
                         }
                         Spacer(minLength: 0)
-                    }
-                }
-                
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        focalculator.deep = 0.0
-                    } label: {
-                        Image(systemName: "arrow.2.squarepath")
                     }
                 }
             }
@@ -78,6 +103,109 @@ struct ConverterView: View {
                 focalculator.convertorMode = false
             }
         }
+        .background()
+    }
+}
+
+struct LoadConverterView: View {
+    
+    @FocusState private var keyboard
+    @State private var defaultLoad = 29000.0
+    @State private var docTemp = 0.0
+    @State private var actualTemp = 0.0
+    var body: some View {
+        VStack {
+            HStack {
+                Text("Load Converter")
+                    .font(.title3)
+                    .bold()
+                
+                Spacer(minLength: 0)
+                
+                Button {
+                    defaultLoad = 29000.0
+                    actualTemp = 0.0
+                } label: {
+                    Image(systemName: "arrow.2.squarepath")
+                        .imageScale(.medium)
+                        .padding(8)
+                        .background(.ultraThinMaterial, in: Circle())
+                }
+            }
+            .padding(.horizontal)
+            .padding(.vertical, 8)
+            
+            Form {
+                Section {
+                    TextField("Load", value: $defaultLoad, format: .number)
+                        .font(.system(size: 48, design: .monospaced))
+                        .keyboardType(.numberPad)
+                } footer: {
+                    Text("Load provided by document")
+                        .textCase(.none)
+                }
+                
+                Section {
+                    TextField("Tempreture", value: $docTemp, format: .number)
+                        .keyboardType(.decimalPad)
+                } header: {
+                    Text("Tempreture in Load's Paper (F)")
+                        .textCase(.none)
+                } footer: {
+                    HStack {
+                        Text(celsius(of: docTemp), format: .number)
+                        Text("C")
+                    }
+                }
+                
+                Section {
+                    TextField("Current Tempreture", value: $actualTemp, format: .number)
+                        .keyboardType(.decimalPad)
+                    
+                } header: {
+                    Text("Current Temp of Load (C)")
+                        .textCase(.none)
+                } footer: {
+                    HStack {
+                        Text(fahrenheit(of: actualTemp), format: .number)
+                        Text("F")
+                    }
+                }
+                
+                Section {
+                    Button {
+                        makeChange(for: actualTemp)
+                    } label: {
+                        Label("Calculate", systemImage: "arrow.forward.circle.fill")
+                            .labelStyle(.titleAndIcon)
+                    }
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .keyboard) {
+                    HStack {
+                        Button("Done") {
+                            keyboard = false
+                        }
+                        Spacer(minLength: 0)
+                    }
+                }
+            }
+        }
+        .background()
+    }
+    
+    private func celsius(of temp: Double) -> Double {
+        Measurement(value: temp, unit: UnitTemperature.fahrenheit).converted(to: UnitTemperature.celsius).value
+    }
+    
+    private func fahrenheit(of temp: Double) -> Double {
+        Measurement(value: temp, unit: UnitTemperature.celsius).converted(to: UnitTemperature.fahrenheit).value
+    }
+    
+    private func makeChange(for temp: Double) {
+        let deltaT = fahrenheit(of: temp) - docTemp
+        defaultLoad += (deltaT * 14.5)
     }
 }
 
