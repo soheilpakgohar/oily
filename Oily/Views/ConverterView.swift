@@ -20,6 +20,7 @@ struct ConverterView: View {
         }
         .tabViewStyle(.page)
         .ignoresSafeArea(.all, edges: .top)
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 
@@ -113,6 +114,7 @@ struct LoadConverterView: View {
     @State private var defaultLoad = 29000.0
     @State private var docTemp = 0.0
     @State private var actualTemp = 0.0
+    @State private var scanMode = false
     var body: some View {
         VStack {
             HStack {
@@ -121,6 +123,15 @@ struct LoadConverterView: View {
                     .bold()
                 
                 Spacer(minLength: 0)
+                
+                Button {
+                    scanMode.toggle()
+                } label: {
+                    Image(systemName: "qrcode.viewfinder")
+                        .imageScale(.medium)
+                        .padding(8)
+                        .background(.ultraThinMaterial, in: Circle())
+                }
                 
                 Button {
                     defaultLoad = 29000.0
@@ -140,6 +151,7 @@ struct LoadConverterView: View {
                     TextField("Load", value: $defaultLoad, format: .number)
                         .font(.system(size: 48, design: .monospaced))
                         .keyboardType(.numberPad)
+                        .focused($keyboard)
                 } footer: {
                     Text("Load provided by document")
                         .textCase(.none)
@@ -148,6 +160,7 @@ struct LoadConverterView: View {
                 Section {
                     TextField("Tempreture", value: $docTemp, format: .number)
                         .keyboardType(.decimalPad)
+                        .focused($keyboard)
                 } header: {
                     Text("Tempreture in Load's Paper (F)")
                         .textCase(.none)
@@ -161,6 +174,7 @@ struct LoadConverterView: View {
                 Section {
                     TextField("Current Tempreture", value: $actualTemp, format: .number)
                         .keyboardType(.decimalPad)
+                        .focused($keyboard)
                     
                 } header: {
                     Text("Current Temp of Load (C)")
@@ -181,6 +195,10 @@ struct LoadConverterView: View {
                     }
                 }
             }
+            .sheet(isPresented: $scanMode, content: {
+                ScannerView(lin: $defaultLoad, temp: $docTemp)
+                    .ignoresSafeArea()
+            })
             .toolbar {
                 ToolbarItem(placement: .keyboard) {
                     HStack {

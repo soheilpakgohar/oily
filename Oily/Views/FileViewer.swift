@@ -55,7 +55,7 @@ struct FileViewer: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
-                           helpSheet = true
+                            helpSheet = true
                         } label: {
                             Image(systemName: "questionmark")
                                 .imageScale(.medium)

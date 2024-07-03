@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB1A73DC2C3420A700FEB23F /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1A73DA2C3420A700FEB23F /* ScannerView.swift */; };
+		CB1A73DD2C3420A700FEB23F /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1A73DB2C3420A700FEB23F /* ScannerViewController.swift */; };
 		CB366F8B2C1C1E3E00EBD3B4 /* FinalVolumeTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB366F8A2C1C1E3E00EBD3B4 /* FinalVolumeTip.swift */; };
 		CB757F302C280A290020D580 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = CB757F2F2C280A290020D580 /* help.html */; };
 		CB757F342C2813D80020D580 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = CB757F332C2813D80020D580 /* sample.png */; };
@@ -43,6 +45,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB1A73DA2C3420A700FEB23F /* ScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		CB1A73DB2C3420A700FEB23F /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		CB366F8A2C1C1E3E00EBD3B4 /* FinalVolumeTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalVolumeTip.swift; sourceTree = "<group>"; };
 		CB757F2F2C280A290020D580 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = help.html; path = Oily/help.html; sourceTree = SOURCE_ROOT; };
 		CB757F332C2813D80020D580 /* sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sample.png; path = Oily/sample.png; sourceTree = SOURCE_ROOT; };
@@ -112,8 +116,6 @@
 				CBE2C1EF2C05AA0D00A2A0CF /* OilyApp.swift */,
 				CBE2C20F2C05B5D200A2A0CF /* Views */,
 				CBE2C2102C05B5E600A2A0CF /* Models */,
-				CBE2C20D2C05B24600A2A0CF /* Extension+Bundle.swift */,
-				CBE2C2112C05C73F00A2A0CF /* TailoredLayout.swift */,
 				CBE2C2072C05AD9A00A2A0CF /* isin.json */,
 				CBE2C1F32C05AA1000A2A0CF /* Assets.xcassets */,
 				CBE2C1F52C05AA1000A2A0CF /* Preview Content */,
@@ -121,6 +123,7 @@
 				CB78AD942C10419900EC6152 /* MessageManager.swift */,
 				CBDA3A402C10784100B6461B /* FileServer.swift */,
 				CBA22BF42C12FFCE00F529AD /* Modifiers.swift */,
+				CBE2C20D2C05B24600A2A0CF /* Extension+Bundle.swift */,
 				CBA22BF62C13000700F529AD /* Extension+Color.swift */,
 				CBA22BF82C13001800F529AD /* Extension+View.swift */,
 			);
@@ -151,9 +154,11 @@
 				CBE5D4A92C12048000A503A4 /* WebView.swift */,
 				CBAB5CF32C197E390097A7FA /* HowitworksView.swift */,
 				CB366F8A2C1C1E3E00EBD3B4 /* FinalVolumeTip.swift */,
+				CBBEC9222C3275400057458C /* ConverterView.swift */,
+				CB1A73DA2C3420A700FEB23F /* ScannerView.swift */,
+				CBE2C2112C05C73F00A2A0CF /* TailoredLayout.swift */,
 				CB757F2F2C280A290020D580 /* help.html */,
 				CB757F332C2813D80020D580 /* sample.png */,
-				CBBEC9222C3275400057458C /* ConverterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 		CBE2C2102C05B5E600A2A0CF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CB1A73DB2C3420A700FEB23F /* ScannerViewController.swift */,
 				CBE2C2002C05AD8800A2A0CF /* FuelOil.swift */,
 				CBE2C1FF2C05AD8800A2A0CF /* FuelOilCalculator.swift */,
 				CBE2C2012C05AD8800A2A0CF /* Storage.swift */,
@@ -256,6 +262,7 @@
 				CBA22BF72C13000700F529AD /* Extension+Color.swift in Sources */,
 				CBE2C2162C05F97E00A2A0CF /* CalculatorButton.swift in Sources */,
 				CB366F8B2C1C1E3E00EBD3B4 /* FinalVolumeTip.swift in Sources */,
+				CB1A73DD2C3420A700FEB23F /* ScannerViewController.swift in Sources */,
 				CB78AD952C10419900EC6152 /* MessageManager.swift in Sources */,
 				CB78AD8B2C10401000EC6152 /* RootView.swift in Sources */,
 				CBE2C20E2C05B24600A2A0CF /* Extension+Bundle.swift in Sources */,
@@ -268,6 +275,7 @@
 				CBE2C20B2C05AF6900A2A0CF /* DataSheetDetailView.swift in Sources */,
 				CBE2C1F02C05AA0D00A2A0CF /* OilyApp.swift in Sources */,
 				CBE2C2052C05AD8900A2A0CF /* Storage.swift in Sources */,
+				CB1A73DC2C3420A700FEB23F /* ScannerView.swift in Sources */,
 				CB78AD932C10412E00EC6152 /* ToastViewGroup.swift in Sources */,
 				CB78AD8D2C10406900EC6152 /* PassThroughWindow.swift in Sources */,
 				CBE5D4AA2C12048000A503A4 /* WebView.swift in Sources */,
@@ -408,6 +416,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Oily;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To read the QRCodes we need to access to the camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -418,7 +427,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 9.0;
+				MARKETING_VERSION = 10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soheilpakgohar.Oily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -439,6 +448,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Oily;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To read the QRCodes we need to access to the camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -449,7 +459,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 9.0;
+				MARKETING_VERSION = 10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soheilpakgohar.Oily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
