@@ -85,8 +85,8 @@ class FuelOilCalculator: ObservableObject {
         guard deepIsVerified() else {return (0,0)}
         let meter = Measurement(value: deep, unit: UnitLength.meters)
         let centimeter = meter.converted(to: .centimeters).value
-        let deepComponent = centimeter.formatted(.number.grouping(.never)).split(separator: ".")
-        return (Int(deepComponent[0]) ?? 0,Int(deepComponent[1]) ?? 0)
+        let millimeter = meter.converted(to: .millimeters).value
+        return (Int(centimeter), Int(centimeter * 10 - millimeter))
     }
     
     func fahrenheit(of temp: Double) -> Double {

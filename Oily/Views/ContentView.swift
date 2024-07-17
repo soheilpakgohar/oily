@@ -25,7 +25,7 @@ struct ContentView: View {
                                 Text("download and select a data source")
                             }, actions: {
                                 Button(action: {
-                                    selection = 1
+                                    selection = 2
                                 }) {
                                     Text("Continue")
                                         .underline()
